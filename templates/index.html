@@ -80,7 +80,7 @@
 	window.onload = () => {
 		$('#trigger').click( () => {
 			$.ajax({
-				url: './utils/GetPredict.php',
+				url: '/fetch',
 				success: () => {
 					getData();
 				}
