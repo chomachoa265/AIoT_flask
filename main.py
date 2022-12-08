@@ -9,10 +9,10 @@ app = Flask(__name__)
 def fetch():
     timeInterval = 1000
     data = pd.DataFrame()
-    print(os.environ)
-#     url = ${{ API_URL }} + '/hw5/getData'
-#     data['time'] = pd.DataFrame(json.loads(urllib.request.urlopen(url).read().decode('utf-8'))['values'])
-    return data
+    print(os.environ['API_URL'])
+    url = os.environ['API_URL'] + '/hw5/getData'
+    data['time'] = pd.DataFrame(json.loads(urllib.request.urlopen(url).read().decode('utf-8'))['values'])
+    return jsonify(data)
 
 @app.route('/predict')
 def predict():
