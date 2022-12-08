@@ -55,22 +55,26 @@
 			url: '/fetch',//連接的URL	  
 			data: "{}",//夾帶的參數
 			dataType: 'json', //資料格式 
-			success: function(data)	//傳送成功的function
+			success: (data) => 	//傳送成功的function
 				{	
 					lights = [];
 					humis=[];
 					temps = [];
 					time = [];
-					
-					for (var i =  0; i < data.length; i++)
-					{
-						if(parseInt(data[i][5])==0){
-							lights.push({y:parseInt(data[i][2]), color: '#FF0000' });
-						}else{
-							lights.push({y:parseInt(data[i][2]), color: '#00FF00' });
-						}
-						time.push(data[i][1]);
-					}
+
+					for(let el of data){
+						parseInt(el.status) ? lights.push({y:parseInt(el.value), color: '#00FF00' }) : lights.push({y:parseInt(el.value), color: '#FF0000' });
+						time.push(el.time);
+					}				
+					// for (var i =  0; i < data.length; i++)
+					// {
+					// 	if(parseInt(data[i][5])==0){
+					// 		lights.push({y:parseInt(data[i][2]), color: '#FF0000' });
+					// 	}else{
+					// 		lights.push({y:parseInt(data[i][2]), color: '#00FF00' });
+					// 	}
+					// 	time.push(data[i][1]);
+					// }
 					highcharsinit();
 					} //success end
 

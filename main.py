@@ -8,10 +8,9 @@ app = Flask(__name__)
 
 @app.route('/fetch')
 def fetch():
-    timeInterval = 1000
-    data = pd.DataFrame()
+    # url = "https://0fda-2001-b400-e4d4-9966-4931-116-faac-5376.jp.ngrok.io" + '/hw5/GetData.php'
     url = os.environ['API_URL'] + '/hw5/GetData.php'
-    data['time'] = pd.DataFrame(json.loads(urllib.request.urlopen(url).read().decode('utf-8'))['values'])
+    data = json.loads(urllib.request.urlopen(url).read())
     return jsonify(data)
 
 @app.route('/predict')
