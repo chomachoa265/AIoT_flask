@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 @app.route('/fetch')
-def fetch(request):
+def fetch():
     timeInterval = 1000
     data = pd.DataFrame()
     url = API_URL + '/hw5/getData'
@@ -14,7 +14,7 @@ def fetch(request):
     return data
 
 @app.route('/predict')
-def predict(request):
+def predict():
     return 0
 
 @app.route('/')
