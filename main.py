@@ -10,8 +10,7 @@ app = Flask(__name__)
 def fetch():
     timeInterval = 1000
     data = pd.DataFrame()
-    print(os.environ['API_URL'])
-    url = os.environ['API_URL'] + '/hw5/getData'
+    url = os.environ['API_URL'] + '/hw5/GetData.php'
     data['time'] = pd.DataFrame(json.loads(urllib.request.urlopen(url).read().decode('utf-8'))['values'])
     return jsonify(data)
 
