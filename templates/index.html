@@ -52,7 +52,7 @@
 
 	const getData = () => {
 		$.ajax({									  
-			url: './utils/GetData.php',//連接的URL	  
+			url: '/fetch',//連接的URL	  
 			data: "{}",//夾帶的參數
 			dataType: 'json', //資料格式 
 			success: function(data)	//傳送成功的function
@@ -66,12 +66,8 @@
 					{
 						if(parseInt(data[i][5])==0){
 							lights.push({y:parseInt(data[i][2]), color: '#FF0000' });
-							humis.push({y:parseInt(data[i][3]), color: '#FF0000' });
-							temps.push({y:parseInt(data[i][4]), color: '#FF0000' });
 						}else{
 							lights.push({y:parseInt(data[i][2]), color: '#00FF00' });
-							humis.push({y:parseInt(data[i][3]), color: '#00FF00' });
-							temps.push({y:parseInt(data[i][4]), color: '#00FF00' });
 						}
 						time.push(data[i][1]);
 					}
